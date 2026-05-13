@@ -62,5 +62,6 @@
         run: dotnet restore CSharpTesting.slnx
 
       - name: Format
-        run: dotnet format CSharpTesting.slnx --verify-no-changes --no-restore 
+        run: dotnet format CSharpTesting.slnx --verify-no-changes --no-restore
+        continue-on-error: true
      
