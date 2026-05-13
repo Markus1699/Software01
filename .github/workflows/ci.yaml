@@ -10,10 +10,9 @@
       - name: Checkout
         uses: actions/checkout@v6 
         
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v5
-        with: 
-         dotnet-versions: "10.0.x"
+      - name: Setup 
+        uses: ./.github/actions/dotnet-setup
+        
       
       - name: Restore dependencies
         run: dotnet restore CSharpTesting.slnx
@@ -29,7 +28,7 @@
       - name: Checkout
         uses: actions/checkout@v6 
         
-      - name: Setup .NET
+      - name: Setup 
         uses: actions/setup-dotnet@v5
         with: 
          dotnet-versions: "10.0.x"
