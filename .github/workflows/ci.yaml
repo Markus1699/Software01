@@ -1,23 +1,22 @@
-name: .NET CI
+ name: .NET CI
 
-on: [push]
+ on: [push]
 
-jobs:
-  built:
-     runs.on: ubuntu-latest
-    
-
+ jobs:
+   built:
+     runs-on: ubuntu-latest
+ 
      steps:
-       -name: Checkout
+      - name: Checkout
         uses: actions/checkout@v6 
         
-       -name: Setup .NET
+      - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with: 
          dotnet-versions: "10.0.x"
       
-       -name: Restore dependencies
+      - name: Restore dependencies
         run: dotnet restore CSharpTesting.slnx
 
-       -name: Build Solution
+      - name: Build Solution
         run: dotnet build CSharpTesting.slnx --configuration Release  --no-restore
