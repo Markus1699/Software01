@@ -3,7 +3,7 @@
  on: [push]
 
  jobs:
-   built:
+   build:
      runs-on: ubuntu-latest
  
      steps:
@@ -23,6 +23,7 @@
 
    test:
     runs-on: ubuntu-latest
+    
     
     steps: 
       - name: Checkout
@@ -45,4 +46,21 @@
       - name: Test ConnectFour
         run: dotnet test ConnectFour.Tests/ConnectFour.Tests.csproj --configuration Release  --no-restore --verbosity normal
 
+   format:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6 
+        
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with: 
+         dotnet-versions: "10.0.x"
+      
+      - name: Restore dependencies
+        run: dotnet restore CSharpTesting.slnx
+
+      - name: Format
+        run: dotnet format CSharpTesting.slnx --verify-no-changes --no-restore 
      
